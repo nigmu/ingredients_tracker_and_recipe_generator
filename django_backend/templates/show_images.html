@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Main Page</h1>
+
+{% if id %}
+    <h1>Image ID: {{ id }}</h1>
+    <h3>Image:</h3>
+    {% if image %}
+        <img src="{{ image.url }}" alt="{{ image_name }}" style="max-width: 20%;">
+    {% else %}
+        <p>No image file associated with this ID.</p>
+    {% endif %}
+    <h2>Predicted Class: {{ predicted_class }}</h2> <!-- Display predicted class -->
+    <p>Image Name: {{ image_name }}</p>
+    <p>Uploaded at: {{ uploaded_at }}</p>
+{% endif %}
+
+<h2>All Images</h2>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Serial No</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Image Name</th>
+                        <th scope="col">Predicted Class</th>
+                        <th scope="col">Uploaded At</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in object_list %}
+                    <tr>
+                        <td>{{ x.serial_number }}</td>
+                        <td>
+                            {% if x.image %}
+                            <a href="{% url 'image_detail' x.id %}">
+                                <img src="{{ x.image.url }}" alt="{{ x.image_name }}" style="max-width: 100px;">
+                            </a>
+                            {% else %}
+                            No image available
+                            {% endif %}
+                        </td>
+                        <td><a href="{% url 'image_detail' x.id %}">{{ x.image_name }}</a></td>
+                        <td><a href="{% url 'image_detail' x.id %}">{{ x.predicted_class }}</a></td>
+                        <td><a href="{% url 'image_detail' x.id %}">{{ x.uploaded_at }}</a></td>
+                        <td><a href="{% url 'image_detail' x.id %}">{{ x.description }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+{% endblock content %}

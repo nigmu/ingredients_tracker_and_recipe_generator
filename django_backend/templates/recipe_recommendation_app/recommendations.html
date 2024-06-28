@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Recipe Recommendations</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Serial No.</th>
+            <th>Score</th>
+            <th>Recipe</th>
+            <th>Ingredients</th>
+            <th>Directions</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for recommendation in recommendations.itertuples %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ recommendation.score }}</td>
+            <td>{{ recommendation.recipe }}</td>
+            <td>{{ recommendation.ingredients }}</td>
+            <td>{{ recommendation.directions }}</td>
+            <td><a href="{{ recommendation.url }}" target="_blank">Link</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/style.css">
+        <title> Fresh Eats </title>
+        
+    </head>
+    <body>
+
+        <div class="topnav">
+            <a href="http://127.0.0.1:7000/">User Name: {{ user.username }}</a>
+            <a class="active" href="http://127.0.0.1:7000/">base</a>
+            <a href="http://127.0.0.1:7000/login/">login</a>
+            <a href="http://127.0.0.1:7000/logout/">logout</a>
+            <a href="http://127.0.0.1:7000/register/">register</a>
+            <a href="http://127.0.0.1:7000/image_upload/upload_image/">Upload Image</a>
+            <a href="http://127.0.0.1:7000/recommend/">Recipes</a>
+            <a href="http://127.0.0.1:7000/admin/">admin</a>
+            
+        </div>
+
+        <form>
+            <input type='text' />
+            <input type='submit' />
+
+        </form>
+
+        
+        {% block content %}
+        {% endblock content %}
+        
+    </body>
+</html>
