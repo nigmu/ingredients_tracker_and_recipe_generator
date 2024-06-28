@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+{% comment %} <form action="/articles/create/" method="POST">
+    <input type='text' name='title' placeholder='Title' />
+    <textarea name='content' placeholder='Content'></textarea>
+    <button type='submit'>Create Article</button>
+</form> {% endcomment %}
+
+    {% if not created %}
+
+    
+
+    <body>
+        <div class="form-style-3">
+            <form action="/articles/create/" method="POST">
+                {% csrf_token %}
+            {% comment %} <fieldset><legend>Title</legend>
+            <label for="field1"><span>Title <span class="required">*</span></span><input type="text" class="input-field" name="title" value="" /></label>
+            </select></label>
+            </fieldset>
+            <fieldset><legend>Message</legend>
+            <label for="field6"><span>Message <span class="required">*</span></span><textarea name="content" class="textarea-field"></textarea></label> {% endcomment %}
+            
+            <fieldset><legend>Title</legend>
+            <label for="field1"><span>Title <span class="required">*</span></span>{{ form.title }}</label>
+            </select></label>
+            </fieldset>
+            <fieldset><legend>Message</legend>
+            <label for="field6"><span>Message <span class="required">*</span></span>{{ form.content }}</label>
+            
+            {% comment %} {{ form.as_p }} {% endcomment %}
+
+            {% comment %} <button type='submit'><span> </span><input type="submit" value="Submit" />Create Article</button> {% endcomment %}
+            {% comment %} <button type='submit'>Create Article</button> {% endcomment %}
+            <label><span> </span><input type="submit" value="Submit" /></label>
+            </fieldset>
+            </form>
+        </div> 
+    </body>
+    {% else %}
+
+    <h1>Your article was created</h1>
+
+    <a href='/articles/{{object.id}}/'>
+        {{object}} {{object.title}} {{object.content}}
+    </a>
+
+    {% endif %}
+
+{% endblock content %}  
