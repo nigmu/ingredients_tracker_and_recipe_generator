@@ -1,7 +1,7 @@
 # Ignore image files
-*.iamges/jpeg
-*.images/jpg
-*.images/png
+django_backend/media/images/*.jpeg
+django_backend/media/images/*.jpg
+django_backend/media/images/*.png
 
 
 # Ignore workspace settings
