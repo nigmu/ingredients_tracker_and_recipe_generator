@@ -1,11 +1,70 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Delete Image</h1>
+<div class="container">
+    <div class="title">Delete Image</div>
     <p>Are you sure you want to delete {{ object.image_name }}?</p>
     <form method="POST">
         {% csrf_token %}
-        <button type="submit">Yes, delete</button>
-        <a href="{% url 'image_detail' object.id %}">Cancel</a>
+        <div class="actions">
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% url 'image_detail' object.id %}" class="btn">Cancel</a>
+        </div>
     </form>
+</div>
 {% endblock content %}
+
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        color: #333;
+    }
+    
+    .container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    
+    .title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2em;
+        color: #ff6f61;
+    }
+    
+    .actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .btn {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 1em;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+    
+    .btn:hover {
+        background-color: #ff6f61;
+        color: white;
+    }
+</style>    

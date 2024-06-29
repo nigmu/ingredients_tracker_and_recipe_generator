@@ -31,5 +31,8 @@ def predict_image_class(image_path):
         return predicted_class
 
     except Exception as e:
-        print(f"Error predicting image: {e}")
+        print(f"Error predicting image from recognition.py: {e}")
         return None
+
+
+# print(predict_image_class("C:/NPersonal/Projects/fresh_eats/dataset/Cauliflower/47.jpeg"))

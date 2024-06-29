@@ -94,27 +94,27 @@ def upload_image_view(request):
                         error_message = "Prediction failed. No class returned."
                         print(error_message)
                         return render(request, 'image_upload/upload_image.html', {'form': form, 'error': error_message})
-                else:
-                    instance.predicted_class = None
-                    
-
-                
-                
+  
                 instance.save()  # Save again with the predicted class
+
+                # Set success message for triggering animation
+                success_message = "Image uploaded successfully!"
+
 
                 # Prepare context for rendering results or redirect
                 context = {
                     'predicted_class': predicted_class,
                     'uploaded_image_url': instance.image.url,  # Pass image URL to display in results
                     'image_name':instance.image_name,
+                    'form': 'form',
+                    'success_message': success_message,
                 }
 
                 # Render a result page with prediction
-                return render(request, 'show_images.html', context)
+                return render(request, 'upload_image', context)
             except Exception as e:
                 # Handle the exception (e.g., log the error)
-                error_message = f"Error predicting image: {e}"
-                print(error_message)
+                error_message = f"Error predicting image from upload_image_view: {e}"
                 return render(request, 'image_upload/upload_image.html', {'form': form, 'error': error_message})
     else:
         form = image_upload_form()

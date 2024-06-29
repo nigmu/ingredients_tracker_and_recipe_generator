@@ -17,7 +17,7 @@
         {% for recommendation in recommendations.itertuples %}
         <tr>
             <td>{{ forloop.counter }}</td>
-            <td>{{ recommendation.score }}</td>
+            {% comment %} <td>{{ recommendation.score }}</td> {% endcomment %}
             <td>{{ recommendation.recipe }}</td>
             <td>{{ recommendation.ingredients }}</td>
             <td>{{ recommendation.directions }}</td>

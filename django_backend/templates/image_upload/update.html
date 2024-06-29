@@ -1,11 +1,69 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Update Image</h1>
+<div class="container">
+    <div class="title">Update Image</div>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save changes</button>
+        <div class="actions">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <a href="{% url 'image_detail' object.id %}" class="btn">Cancel</a>
+        </div>
     </form>
-    <a href="http://127.0.0.1:7000/image_upload/{{ object.id }}">Cancel</a>
+</div>
 {% endblock content %}
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        color: #333;
+    }
+    
+    .container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    
+    .title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2em;
+        color: #ff6f61;
+    }
+    
+    .actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .btn {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 1em;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0069d9;
+    }
+    
+    .btn:hover {
+        background-color: #ff6f61;
+        color: white;
+    }
+</style>    

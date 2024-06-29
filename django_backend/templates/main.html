@@ -1,56 +1,127 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Main Page</h1>
-
-{% if id %}
-    <h1>Image ID: {{ id }}</h1>
-    <h3>Image:</h3>
-    {% if image %}
-        <img src="{{ image.url }}" alt="{{ image_name }}" style="max-width: 20%;">
-    {% else %}
-        <p>No image file associated with this ID.</p>
-    {% endif %}
-    <h2>Predicted Class: {{ predicted_class }}</h2> <!-- Display predicted class -->
-    <p>Image Name: {{ image_name }}</p>
-    <p>Uploaded at: {{ uploaded_at }}</p>
-{% endif %}
-
-<h2>All Images</h2>
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Serial No</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Image Name</th>
-                        <th scope="col">Predicted Class</th>
-                        <th scope="col">Uploaded At</th>
-                        <th scope="col">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for x in object_list %}
-                    <tr>
-                        <td>{{ x.serial_number }}</td>
-                        <td>
-                            {% if x.image %}
-                            <a href="{% url 'image_detail' x.id %}">
-                                <img src="{{ x.image.url }}" alt="{{ x.image_name }}" style="max-width: 100px;">
-                            </a>
-                            {% else %}
-                            No image available
-                            {% endif %}
-                        </td>
-                        <td><a href="{% url 'image_detail' x.id %}">{{ x.image_name }}</a></td>
-                        <td><a href="{% url 'image_detail' x.id %}">{{ x.predicted_class }}</a></td>
-                        <td><a href="{% url 'image_detail' x.id %}">{{ x.uploaded_at }}</a></td>
-                        <td><a href="{% url 'image_detail' x.id %}">{{ x.description }}</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+<div class="container-main-page">
+    <div class="title">Items Information</div>
+    <div class="table-container">
+        <div class="table-scroll">
+            <div class="row header">
+                <div class="column">Name</div>
+                <div class="column">Description</div>
+                <div class="column">Uploaded At</div>
+            </div>
+            {% for x in object_list %}
+                <div class="row">
+                    <div class="column"><a href="{% url 'image_detail' x.id %}">{{ x.image_name }}</a></div>
+                    <div class="column">{{ x.description }}</div>
+                    <div class="column">{{ x.uploaded_at }}</div>
+                </div>
+            {% endfor %}
         </div>
-
+    </div>
+    <br><br><br>
+    <div class="title">Recipes You Can Make</div>
+    <div class="section">
+        <div class="recipes">
+            <ul>
+                {% for recommendation in recommendations.itertuples %}
+                <li>
+                    <h3><a href="{% url 'recipe_detail' recommendation.recipe %}">{{ recommendation.recipe }}</a></h3>
+                    <p>{{ recommendation.ingredients }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock content %}
+
+
+
+<style>
+    .container-main-page {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    .title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2em;
+        color: #ff6f61;
+    }
+    .table-container {
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .row {
+        display: flex;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .row.header {
+        background-color: #ff6f61;
+        color: white;
+        font-weight: bold;
+    }
+    .row:last-child {
+        border-bottom: none;
+    }
+    .column {
+        flex: 1;
+        padding: 0 15px;
+        text-align: left;
+    }
+    .row:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .row:hover {
+        background-color: #f1f1f1;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    .title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2em;
+        color: #ff6f61;
+    }
+    .section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+    }
+    .ingredients, .recipes {
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        flex: 1;
+        margin: 0 10px;
+        padding: 20px;
+    }
+    .ingredients ul, .recipes ul {
+        list-style: none;
+        padding: 0;
+    }
+    .ingredients ul li, .recipes ul li {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .recipes ul li:last-child, .ingredients ul li:last-child {
+        border-bottom: none;
+    }
+    .recipes ul li h3 {
+        margin: 0;
+        font-size: 1.2em;
+        color: #ff6f61;
+    }
+    .recipes ul li p {
+        margin: 5px 0 0;
+    
+</style>

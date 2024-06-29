@@ -35,6 +35,7 @@ from .views import (
 
 from recipe_recommendation_app.views import (
     recipe_recommendation_view,
+    recipe_detail_view,
 )
 
 urlpatterns = [
@@ -54,5 +55,10 @@ urlpatterns = [
 
     #recipe recommendation
     path("recommend/", recipe_recommendation_view, name="recipe_recommendation"),
-    
+    path("recommend/<str:recipe>/", recipe_detail_view, name="recipe_detail"),
+    # path('external_link/<str:recipe>/', external_link_view, name='external_link'),
+    # path("recommend/<str:recipe>/<str:link>", external_link_view, name="redirect_link")
+    # path('redirect/<path:url>/', external_link_view, name='external_link_view'),
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

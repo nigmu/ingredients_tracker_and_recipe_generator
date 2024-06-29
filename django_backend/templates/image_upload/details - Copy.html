@@ -1,21 +1,70 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Image Details</h1>
-    <p>Image: <img src="{{ object.image.url }}" alt="{{ object.image_name }}"></p>
-    <p>Image Name: {{ object.image_name }}</p>
-    <p>Uploaded At: {{ object.uploaded_at }}</p>
-    <p>Predicted Class: {{ object.predicted_class }}</p>
-    <a href="http://127.0.0.1:7000/image_upload/{{ object.id }}/update">Edit</a>
-    <a href="http://127.0.0.1:7000/image_upload/{{ object.id }}/delete">Delete</a>
+<div class="container">
+    <div class="title">Image Details</div>
+    <div class="image-container">
+        <img src="{{ object.image.url }}" alt="{{ object.image_name }}" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="details">
+        <p><strong>Image Name:</strong> {{ object.image_name }}</p>
+        <p><strong>Uploaded At:</strong> {{ object.uploaded_at }}</p>
+        <p><strong>Predicted Class:</strong> {{ object.predicted_class }}</p>
+    </div>
+    <div class="actions">
+        <a href="{% url 'image_update' object.id %}" class="btn">Edit</a>
+        <a href="{% url 'image_delete' object.id %}" class="btn">Delete</a>
+    </div>
+</div>
 {% endblock content %}
 
-{% comment %} 
-{% extends "base.html" %}
-
-{% block content %}
-    <h1>Image:{{ object.image }}</h1>
-    <p>Image Name:{{ object.image_name }}</p>
-    <a href="http://127.0.0.1:7000/image_upload/{{ object.id }}/update">Edit</a>
-    <a href="http://127.0.0.1:7000/image_upload/{{ object.id }}/delete">Delete</a>
-{% endblock content %} {% endcomment %}
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        color: #333;
+    }
+    .container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    .title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2em;
+        color: #ff6f61;
+    }
+    .image-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .details {
+        margin-bottom: 20px;
+    }
+    .details p {
+        margin-bottom: 10px;
+    }
+    .actions {
+        text-align: center;
+    }
+    .btn {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 10px 20px;
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        text-decoration: none;
+    }
+    .btn:hover {
+        background-color: #e6523d;
+    }
+</style>

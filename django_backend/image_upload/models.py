@@ -18,4 +18,4 @@ class upload_image_class(models.Model):
     
 
     def __str__(self):
-        return self.image_name
+        return self.image_name if self.image_name else "Untitled Image"

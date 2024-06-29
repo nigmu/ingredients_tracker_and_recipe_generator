@@ -835,11 +835,6 @@ a.deletelink:focus, a.deletelink:hover {
     margin-right: -300px;
 }
 
-#footer {
-    clear: both;
-    padding: 10px;
-}
-
 /* COLUMN TYPES */
 
 .colMS {
