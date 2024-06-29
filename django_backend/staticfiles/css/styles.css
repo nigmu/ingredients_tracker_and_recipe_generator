@@ -1,0 +1,73 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f3f4f6;
+	color: #333;
+}
+header {
+	background-color: #ff6f61;
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+nav {
+	background-color: #333;
+	color: white;
+	padding: 10px 20px;
+}
+nav a {
+	color: white;
+	text-decoration: none;
+	margin-right: 15px;
+	font-weight: 500;
+}
+.container {
+	max-width: 1200px;
+	margin: 40px auto;
+	padding: 0 20px;
+}
+.title {
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 2em;
+	color: #ff6f61;
+}
+.section {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 40px;
+}
+.ingredients, .recipes {
+	background-color: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	flex: 1;
+	margin: 0 10px;
+	padding: 20px;
+}
+.ingredients ul, .recipes ul {
+	list-style: none;
+	padding: 0;
+}
+.ingredients ul li, .recipes ul li {
+	padding: 12px 15px;
+	border-bottom: 1px solid #eee;
+}
+.recipes ul li:last-child, .ingredients ul li:last-child {
+	border-bottom: none;
+}
+.recipes ul li h3 {
+	margin: 0;
+	font-size: 1.2em;
+	color: #ff6f61;
+}
+.recipes ul li p {
+	margin: 5px 0 0;
+}
+footer {
+	text-align: center;
+	padding: 20px 0;
+	background-color: #ff6f61;
+	color: white;
+}

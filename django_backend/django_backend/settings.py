@@ -155,12 +155,13 @@ LOGIN_URL = "/login/"
 
 
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
 STATICFILES_DIRS = [
-    # BASE_DIR / "static",
+    BASE_DIR / "static",
     # os.path.join(BASE_DIR, 'static'),
-    "C:/NPersonal/Projects/fresh_eats/Django_backend/django_backend/static",
+    # "C:/NPersonal/Projects/fresh_eats/Django_backend/django_backend/static",
 
 ]
-
-
 
